@@ -1,4 +1,6 @@
 [NEW]
-+https://cdn.jsdelivr.net/gh/ArsiIksait/crobot@main/README.md:%~dp0;阅读我v1.0.0
++ https://cdn.jsdelivr.net/gh/ArsiIksait/crobot@main/README.md>%~dp0*阅读我v1.0.0
 [REMOVE]
--README:%~dp0;阅读我v0.0.1
+- README>%~dp0*阅读我v0.0.1
+[MOVE]
+< Robot.7z>ext*移动压缩包到EXT文件夹
