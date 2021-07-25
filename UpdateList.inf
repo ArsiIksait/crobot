@@ -1,7 +1,7 @@
 [NEW]
-+ https://cdn.jsdelivr.net/gh/ArsiIksait/crobot@main/README.md>%~dp0*é˜…è¯»æˆ‘v1.0.0
-+ https://raw.githubusercontent.com/ArsiIksait/crobot/main/crobot.bat>%~dp0*ä¸»ç¨‹åºæ›´æ–°v0.0.1
++ https://cdn.jsdelivr.net/gh/ArsiIksait/crobot@main/README.md>%~dp0*ÔÄ¶ÁÎÒv1.0.0
++ https://raw.githubusercontent.com/ArsiIksait/crobot/main/crobot.bat>%~dp0*Ö÷³ÌÐò¸üÐÂv0.0.1
 [REMOVE]
-- README>%~dp0*é˜…è¯»æˆ‘v0.0.1
+- README>%~dp0*ÔÄ¶ÁÎÒv0.0.1
 [MOVE]
-< Robot.7z>ext*ç§»åŠ¨åŽ‹ç¼©åŒ…åˆ°EXTæ–‡ä»¶å¤¹
+< Robot.7z>ext*ÒÆ¶¯Ñ¹Ëõ°üµ½EXTÎÄ¼þ¼Ð
