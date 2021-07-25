@@ -1,41 +1,41 @@
 @echo off&title CMD Robot
-set thisVer1=0&set thisVer2=0&set thisVer3=0
-echo »¶Ó­Ê¹ÓÃCMD»úÆ÷ÈË,ÇëÏÈµÇÂ½ÔÙÊ¹ÓÃ!
+set thisVer1=1&set thisVer2=0&set thisVer3=0
+echo æ¬¢è¿ä½¿ç”¨CMDæœºå™¨äºº,è¯·å…ˆç™»é™†å†ä½¿ç”¨!
 echo.
 :Start
-echo:Login µÇÂ½ [L]    Register ×¢²á [R]    Exit ÍË³ö [E]
-choice /C "LRE" /D E /T 10 /M "ÇëÔÚ10ÃëÄÚ×ö³öÑ¡Ôñ:"
+echo:Login ç™»é™† [L]    Register æ³¨å†Œ [R]    Exit é€€å‡º [E]
+choice /C "LRE" /D E /T 10 /M "è¯·åœ¨10ç§’å†…åšå‡ºé€‰æ‹©:"
 if %ERRORLEVEL%==1 (cls&goto :Login)
 if %ERRORLEVEL%==2 (cls&goto :Register)
 if %ERRORLEVEL%==3 (cls&goto :Eof)
-cls&echo:³öÏÖ´íÎó,ÇëÖØĞÂÑ¡Ôñ!&goto :Start
+cls&echo:å‡ºç°é”™è¯¯,è¯·é‡æ–°é€‰æ‹©!&goto :Start
 :Login
 title CMD Robot - Login
 if not exist "users" (MD users)
 echo 
 set /p account=Please Enter Account:
-if "%account%"=="" (echo=Äã²»ÄÜÊäÈë¿ÕµÄÕË»§!&goto :Login)
+if "%account%"=="" (echo=ä½ ä¸èƒ½è¾“å…¥ç©ºçš„è´¦æˆ·!&goto :Login)
 set /p password=Please Enter Password:
-if "%password%"=="" (echo=Äã²»ÄÜÊäÈë¿ÕµÄÃÜÂë!&goto :Login)
+if "%password%"=="" (echo=ä½ ä¸èƒ½è¾“å…¥ç©ºçš„å¯†ç !&goto :Login)
 hash /string "%account%" /md5 /nh /hide>user.tmp
 set /p user=<user.tmp&&del user.tmp
 set user=%user: =%
 hash /string "%password%" /sha1 /nh /hide>%user%.account.comp
-echo.N|comp %CD%\users\%user%.account %CD%\%user%.account.comp|findstr "ÎÄ¼ş±È½ÏÎŞÎó"&&(del %user%.account.comp&cls&echo µÇÂ½³É¹¦!&pause&goto :Main)||(del %user%.account.comp&cls&echo µÇÂ½Ê§°Ü,ÓÃ»§Ãû»òÃÜÂë´íÎó!&pause&goto :Eof)
-echo.³öÏÖÁËÒ»¸ö´íÎó!&pause&exit
+echo.N|comp %CD%\users\%user%.account %CD%\%user%.account.comp|findstr "æ–‡ä»¶æ¯”è¾ƒæ— è¯¯"&&(del %user%.account.comp&cls&echo ç™»é™†æˆåŠŸ!&pause&goto :Main)||(del %user%.account.comp&cls&echo ç™»é™†å¤±è´¥,ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!&pause&goto :Eof)
+echo.å‡ºç°äº†ä¸€ä¸ªé”™è¯¯!&pause&exit
 :Register
 title CMD Robot - Register
 if not exist "users" (MD users)
 echo 
 set /p account=Please Enter Account:
-if "%account%"=="" (echo=Äã²»ÄÜÊäÈë¿ÕµÄÕË»§!&goto :Register)
+if "%account%"=="" (echo=ä½ ä¸èƒ½è¾“å…¥ç©ºçš„è´¦æˆ·!&goto :Register)
 set /p password=Please Enter Password:
-if "%password%"=="" (echo=Äã²»ÄÜÊäÈë¿ÕµÄÃÜÂë!&goto :Register)
+if "%password%"=="" (echo=ä½ ä¸èƒ½è¾“å…¥ç©ºçš„å¯†ç !&goto :Register)
 hash /string "%account%" /md5 /nh /hide>user.tmp
 set /p user=<user.tmp&&del user.tmp
 set user=%user: =%
 hash /string "%account%@%password%" /sha1 /nh /hide>users\%user%.account
-echo ×¢²á³É¹¦! ÄúµÄÓÃ»§ÎÄ¼şÒÑ´æ·ÅÖÁ:%CD%\user\%user%.account
+echo æ³¨å†ŒæˆåŠŸ! æ‚¨çš„ç”¨æˆ·æ–‡ä»¶å·²å­˜æ”¾è‡³:%CD%\user\%user%.account
 pause&start %~f0&exit
 :Update
 title CMD Robot - Update
@@ -60,15 +60,15 @@ del UpdateInfo.inf
 title CMD Robot - Update: Done
 exit /b
 )
-if "%1"=="cancel" (echo ÄúÈ¡ÏûÁË¸üĞÂ&del UpdateInfo.inf&exit /b)
+if "%1"=="cancel" (echo æ‚¨å–æ¶ˆäº†æ›´æ–°&del UpdateInfo.inf&exit /b)
 if "%1"=="getUpdateInfo" (
-echo ÕıÔÚ¼ì²é¸üĞÂ,ÇëÉÔºó...
+echo æ­£åœ¨æ£€æŸ¥æ›´æ–°,è¯·ç¨å...
 pget -u https://raw.githubusercontent.com/ArsiIksait/crobot/main/UpdateInfo.inf >nul
 for /f "eol=# tokens=1,2* delims==" %%i in (UpdateInfo.inf) do (
  if "%%i"=="New_Crobot_Version" (
   echo=%%j>newVer.inf
   for /f "tokens=1,2* delims=." %%a in (newVer.inf) do (
-   echo=µ±Ç°°æ±¾:[%thisVer1%.%thisVer2%.%thisVer3%] ´¢´æ¿â°æ±¾:[%%j]
+   echo=å½“å‰ç‰ˆæœ¬:[%thisVer1%.%thisVer2%.%thisVer3%] å‚¨å­˜åº“ç‰ˆæœ¬:[%%j]
     set haveUpdate=true
    )
    del newVer.inf
@@ -82,10 +82,10 @@ Setlocal Enabledelayedexpansion
 call :Update getUpdateInfo
 title CMD Robot - Main
 if "%haveUpdate%"=="true" (
-echo ·¢ÏÖÁËĞÂµÄ°æ±¾,ÊÇ·ñ¸üĞÂ?
-choice /C "UC" /M "Update ¸üĞÂ[U]	Cancel²»¸üĞÂ[C]:"
+echo å‘ç°äº†æ–°çš„ç‰ˆæœ¬,æ˜¯å¦æ›´æ–°?
+choice /C "UC" /M "Update æ›´æ–°[U]	Cancelä¸æ›´æ–°[C]:"
 if !ERRORLEVEL!==1 (call :Update download)
 if !ERRORLEVEL!==2 (call :Update cancel)
 )
-echo Íê³É!
+echo å®Œæˆ!
 pause&goto :Eof
