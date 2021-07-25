@@ -1,5 +1,6 @@
 @echo off&title CMD Robot
 set thisVer1=1&set thisVer2=0&set thisVer3=0
+if exist "Updateing.log" (del Updateing.log&echo 更新成功! 当前版本:[%thisVer1%.%thisVer2%.%thisVer3%]&exit)
 echo 欢迎使用CMD机器人,请先登陆再使用!
 echo.
 :Start
@@ -40,6 +41,7 @@ pause&start %~f0&exit
 :Update
 title CMD Robot - Update
 if "%1"=="download" (
+cd.>Updateing.log
 title CMD Robot - Update: Download
 pget -u https://raw.githubusercontent.com/ArsiIksait/crobot/main/UpdateList.inf >nul
 for /f "tokens=1,2* delims=> " %%i in (UpdateList.inf) do (
